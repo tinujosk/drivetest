@@ -34,10 +34,7 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
-// app.get('/*', (req, res) => {
-//   res.render('dashboard');
-// });
-
+// Route to create new user details
 app.post('/users/create', async (req, res) => {
   const {
     firstName,
@@ -51,7 +48,6 @@ app.post('/users/create', async (req, res) => {
     plateNumber,
   } = req.body;
 
-  // Construct the carDetails object
   const carDetails = {
     carMake,
     carModel,
@@ -59,7 +55,6 @@ app.post('/users/create', async (req, res) => {
     plateNumber,
   };
 
-  // Create a new user instance
   const newUser = new User({
     firstName,
     lastName,
@@ -73,9 +68,9 @@ app.post('/users/create', async (req, res) => {
   res.redirect('/');
 });
 
+// Update an existing user details using id
 app.post('/users/update', async (req, res) => {
   const { id, carMake, carModel, carYear, plateNumber } = req.body;
-  console.log('ok bosy', req.body);
   const carDetails = {
     carMake,
     carModel,
@@ -89,26 +84,19 @@ app.post('/users/update', async (req, res) => {
       { $set: { carDetails } },
       { new: true }
     );
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
     res.render('g-test', { user });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
+// Search for an exisiting user
 app.get('/users/search', async (req, res) => {
   try {
     const user = await User.findOne({
       licenceNumber: req.query.licenceNumber,
     });
-    console.log('user', user);
-    // if (!user) {
-    //   return res.status(404).json({ message: 'User not found' });
-    // }
     res.render('g-test', { user });
-    // res.render('g-test');
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
