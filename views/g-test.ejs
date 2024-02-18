@@ -5,10 +5,7 @@
     <!-- Navigation-->
     <%- include('layouts/navbar'); -%>
     <!-- Page Header-->
-    <header
-      class="masthead"
-      style="background-image: url('assets/img/home-bg.jpg')"
-    >
+    <header class="masthead">
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
@@ -26,7 +23,7 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
           <!-- Post preview-->
           <div class="post-preview">
-            <a href="post.html">
+            <a href="#">
               <h2 class="post-title">G DriveTest Booking.</h2>
               <h3 class="post-subtitle">Please keep your G2 licence ready.</h3>
             </a>
@@ -37,24 +34,34 @@
             </p>
           </div>
           <div class="container mt-4">
-            <form class="col-md-6">
+            <form class="col-md-6" action="/users/search">
               <div class="form-group mb-4">
-                <label for="firstName">License Number</label>
+                <label for="licenceNumber">License Number</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="firstName"
+                  id="licenceNumber"
+                  name="licenceNumber"
                   placeholder="Enter your licence number"
                   required
                 />
               </div>
               <button type="submit" class="btn btn-primary mb-4">
-                Submit Request
+                Fetch details
               </button>
             </form>
           </div>
         </div>
       </div>
+      <% if (user !== undefined) { if(user) { %> <%- include('layouts/userForm',
+      { action: '/users/update', title: 'CreateUser', buttonLabel: 'Update',
+      disable: true, user}); %> <% } else { %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="text-center fw-bold text-danger">
+          User not found. Please check the licence number
+        </p>
+      </div>
+      <% }} %>
     </div>
     <%- include('layouts/footer'); -%> <%- include('layouts/script'); -%>
   </body>

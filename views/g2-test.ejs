@@ -5,10 +5,7 @@
     <!-- Navigation-->
     <%- include('layouts/navbar'); -%>
     <!-- Page Header-->
-    <header
-      class="masthead"
-      style="background-image: url('assets/img/home-bg.jpg')"
-    >
+    <header class="masthead">
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
@@ -26,7 +23,7 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
           <!-- Post preview-->
           <div class="post-preview">
-            <a href="post.html">
+            <a href="#">
               <h2 class="post-title">G2 DriveTest Booking.</h2>
               <h3 class="post-subtitle">Please keep your G1 licence ready.</h3>
             </a>
@@ -38,100 +35,8 @@
           </div>
         </div>
       </div>
-      <div class="container mt-4 row justify-content-center">
-        <form class="col-md-6">
-          <h3 class="mb-4">Personal Details</h3>
-          <div class="form-group mb-4">
-            <label for="firstName">First Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              placeholder="Enter your first name"
-              required
-            />
-          </div>
-          <div class="form-group mb-4">
-            <label for="lastName">Last Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lastName"
-              placeholder="Enter your last name"
-              required
-            />
-          </div>
-          <div class="form-group mb-4">
-            <label for="licenseNumber">License Number</label>
-            <input
-              type="text"
-              class="form-control"
-              id="licenseNumber"
-              placeholder="Enter 8-character alpha-numeric license number"
-              pattern="[a-zA-Z0-9]{8}"
-              required
-            />
-          </div>
-          <div class="form-group mb-4">
-            <label for="age">Age</label>
-            <input
-              type="number"
-              class="form-control"
-              id="age"
-              placeholder="Enter your age"
-              required
-            />
-          </div>
-          <div class="form-group mb-4">
-            <label for="dob">Date of Birth</label>
-            <input type="date" class="form-control" id="dob" required />
-          </div>
-          <h3 class="mb-4">Car Details</h3>
-          <div class="form-group mb-4">
-            <label for="carMake">Car Make</label>
-            <input
-              type="text"
-              class="form-control"
-              id="carMake"
-              placeholder="Enter car make"
-              required
-            />
-          </div>
-          <div class="form-group mb-4">
-            <label for="carModel">Car Model</label>
-            <input
-              type="text"
-              class="form-control"
-              id="carModel"
-              placeholder="Enter car model"
-              required
-            />
-          </div>
-          <div class="form-group mb-4">
-            <label for="carYear">Car Year</label>
-            <input
-              type="text"
-              class="form-control"
-              id="carYear"
-              placeholder="Enter car year"
-              required
-            />
-          </div>
-          <div class="form-group mb-4">
-            <label for="plateNumber">Plate Number</label>
-            <input
-              type="text"
-              class="form-control"
-              id="plateNumber"
-              placeholder="Enter plate number"
-              required
-            />
-          </div>
-          <button type="submit" class="btn btn-primary mb-4">
-            Submit Request
-          </button>
-        </form>
-      </div>
+      <%- include('layouts/userForm', { action: '/users/create', title:
+      'CreateUser', buttonLabel: 'Submit', disable: false, user: undefined}); %>
     </div>
     <%- include('layouts/footer'); -%> <%- include('layouts/script'); -%>
   </body>

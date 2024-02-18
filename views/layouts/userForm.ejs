@@ -1,0 +1,99 @@
+<div class="container mt-4 row justify-content-center">
+  <form class="col-md-6" action="<%= action %>" method="POST">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7 w-100 p-5 shadow">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h3 class="mb-4">Personal Details</h3>
+            <div class="form-group mb-4">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" id="firstName"
+              name="firstName" placeholder="Enter your first name" required
+              <%=disable ? 'disabled' : '' %> value="<%= user?.firstName %>"/>
+            </div>
+            <div class="form-group mb-4">
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control" id="lastName"
+              name="lastName" placeholder="Enter your last name" required
+              <%=disable ? 'disabled' : '' %> value="<%= user?.lastName %>"/>
+            </div>
+            <div class="form-group mb-4">
+              <label for="licenceNumber">License Number</label>
+              <input type="text" class="form-control" id="licenceNumber"
+              name="licenceNumber" placeholder="Enter 8-character alpha-numeric
+              license number" pattern="[a-zA-Z0-9]{8}" required <%=disable ?
+              'disabled' : '' %> value="<%= user?.licenceNumber %>"/>
+            </div>
+            <div class="form-group mb-4">
+              <label for="age">Age</label>
+              <input type="number" class="form-control" id="age" name="age"
+              placeholder="Enter your age" required <%=disable ? 'disabled' : ''
+              %> value="<%= user?.age %>"/>
+            </div>
+            <div class="form-group mb-4">
+              <label for="dob">Date of Birth</label>
+              <input type="date" class="form-control" id="dob" name="dob"
+              required <%=disable ? 'disabled' : '' %> value="<%=
+              user?.dob.toISOString().split('T')[0] %>"/>
+            </div>
+          </div>
+          <div>
+            <h3 class="mb-4">Car Details</h3>
+            <input name="id" value="<%= user?._id %>" hidden />
+            <div class="form-group mb-4">
+              <label for="carMake">Car Make</label>
+              <input
+                type="text"
+                class="form-control"
+                name="carMake"
+                id="carMake"
+                placeholder="Enter car make"
+                required
+                value="<%= user?.carDetails?.carMake %>"
+              />
+            </div>
+            <div class="form-group mb-4">
+              <label for="carModel">Car Model</label>
+              <input
+                type="text"
+                class="form-control"
+                id="carModel"
+                name="carModel"
+                placeholder="Enter car model"
+                required
+                value="<%= user?.carDetails?.carModel %>"
+              />
+            </div>
+            <div class="form-group mb-4">
+              <label for="carYear">Car Year</label>
+              <input
+                type="number"
+                class="form-control"
+                id="carYear"
+                name="carYear"
+                placeholder="Enter car year"
+                required
+                value="<%= user?.carDetails?.carYear %>"
+              />
+            </div>
+            <div class="form-group mb-4">
+              <label for="plateNumber">Plate Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="plateNumber"
+                name="plateNumber"
+                placeholder="Enter plate number"
+                required
+                value="<%= user?.carDetails?.plateNumber %>"
+              />
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-4 w-100">
+          <%= buttonLabel %>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
