@@ -33,35 +33,15 @@
               on January 27, 2024
             </p>
           </div>
-          <div class="container mt-4">
-            <form class="col-md-6" action="/users/search">
-              <div class="form-group mb-4">
-                <label for="licenceNumber">License Number</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="licenceNumber"
-                  name="licenceNumber"
-                  placeholder="Enter your licence number"
-                  required
-                />
-              </div>
-              <button type="submit" class="btn btn-primary mb-4">
-                Fetch details
-              </button>
-            </form>
-          </div>
         </div>
       </div>
-      <% if (user !== undefined) { if(user) { %> <%- include('layouts/userForm',
-      { action: '/users/update', title: 'CreateUser', buttonLabel: 'Update',
-      disable: true, user}); %> <% } else { %>
+      <% if(user) { %> <%- include('layouts/userForm', { action:
+      '/users/update', title: 'CreateUser', buttonLabel: 'Update', disable:
+      true, user}); %> <% } else { %>
       <div class="d-flex justify-content-center align-items-center">
-        <p class="text-center fw-bold text-danger">
-          User not found. Please check the licence number
-        </p>
+        <p class="text-center fw-bold text-danger">User not found</p>
       </div>
-      <% }} %>
+      <% }%>
     </div>
     <%- include('layouts/footer'); -%> <%- include('layouts/script'); -%>
   </body>

@@ -35,8 +35,13 @@
           </div>
         </div>
       </div>
-      <%- include('layouts/userForm', { action: '/users/create', title:
-      'CreateUser', buttonLabel: 'Submit', disable: false, user: undefined}); %>
+      <% if(user) { %> <%- include('layouts/userForm', {action: '/users/update',
+      title: 'CreateUser', buttonLabel: 'Update', disable: false, user}); %> <%
+      } else { %>
+      <div class="d-flex justify-content-center align-items-center">
+        <p class="text-center fw-bold text-danger">User not found</p>
+      </div>
+      <% }%>
     </div>
     <%- include('layouts/footer'); -%> <%- include('layouts/script'); -%>
   </body>
