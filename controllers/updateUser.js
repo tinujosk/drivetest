@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
       { $set: { firstName, lastName, licenceNumber, age, carDetails } },
       { new: true }
     );
-    res.render('g2-test', { user });
+    res.render('dashboard');
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
